@@ -1,0 +1,12 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Logo</a>
+    <ul class="right hide-on-med-and-down">
+      <li><%= link_to raw("<i class='mdi-social-person left'></i>") + @current_user.name, @current_user, class: "tooltipped", :data => { :position => 'bottom', :delay => '50', :tooltip => 'Mi perfil' } %></li>
+      <li><%= link_to raw("<i class='mdi-communication-vpn-key'></i>"), change_password_path(@current_user), class: "tooltipped", :data => { :position => 'bottom', :delay => '50', :tooltip => 'Cambiar contraseña' } %></li>
+      <!--<li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cambiar contraseña" href="#!"><i class="mdi-communication-vpn-key"></i></a></li>-->
+      <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Configuración" href="#!"><i class="mdi-action-settings"></i></a></li>
+      <li><%= link_to raw("<i class='mdi-action-settings-power'></i>"), signout_path, method: "delete", class: "tooltipped", :data => { :position => 'bottom', :delay => '50', :tooltip => 'Salir' } %></li>
+    </ul>
+  </div>
+</nav>
