@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :change_password, :update_password  ]
-	before_action :correct_user,   only: [:edit, :update, :change_password, :update_password]
+	before_action :correct_user,   only: [:edit, :update, :update_password]
 	before_action :admin_user,     only: :destroy
 
   layout :custom_layout
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user 
+      sign_in @user
     	flash[:success] = "Bienvenido a EasyCount!"
       redirect_to @user
     else
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     end
 
     def password_params
-      params.require(:user).permit(:password_digest)
+      params.require(:user).permit(:password, :password_confirmation)
     end
 
     def custom_layout
