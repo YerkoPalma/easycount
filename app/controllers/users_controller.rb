@@ -29,11 +29,16 @@ class UsersController < ApplicationController
   #post
   def update_password
     @user = User.find(params[:id])
-    if @user.update_attributes(password_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
+    if params[:user][:old_password] == User.digest(@user.password_digest)
+      if @user.update_attributes(password_params)
+        flash.now[:success] = "Contraseña actualizada"
+        redirect_to @user
+      else
+        flash.now[:danger] = "No se pudo editar"
+        render 'change_password'
+      end
     else
-      flash[:danger] = "No se pudo editar!"
+      flash.now[:danger] = "La contraseña actual es incorrecta"
       render 'change_password'
     end
   end
