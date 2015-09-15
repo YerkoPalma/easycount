@@ -6,9 +6,25 @@ class CompaniesController < ApplicationController
   def new
     @user = User.find(params[:user_id])
   end
+  
+  def create
+    @user = User.find(params[:user_id])
+    @company = @user.companies.new(company_params)
+    if @company.save
+      flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
+      redirect_to @user
+    else
+      flash.now[:error] = "No se ingresar tu empresa"
+      render 'pages/index'
+    end
+  end
 
 
   private
+    def company_params
+      params.require(:company).permit(:rut, :name, :description)
+    end
+  
     def custom_layout
       signed_in? ?  "dashboard" : "application"
     end

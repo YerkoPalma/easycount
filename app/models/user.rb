@@ -8,7 +8,7 @@ class User
   field :password_digest, type: String
   field :_id, type: String, default: ->{ name } 
   
-  embeds_many :companies, class_name: "Company", inverse_of: :contador
+  embeds_many :companies, class_name: "Company", inverse_of: :contador, cascade_callbacks: true
   
   before_save { self.email = email.downcase }
   
