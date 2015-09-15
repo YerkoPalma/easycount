@@ -5,5 +5,7 @@
 - [x] Actualizar Readme
 - [ ] Implementar restricciones de cambio de contraseña
 - [ ] Agregar menu de gestion empresas
-- [ ] Agregar links para crear empresas
-- [ ] Agregar formulario de empresas
+- [x] Agregar links para crear empresas
+- [x] Agregar formulario de empresas
+- [ ] Identificar empresa actual del usuario
+- [ ] Agregar menu principal del dashboard
