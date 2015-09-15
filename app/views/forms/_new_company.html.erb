@@ -1,4 +1,4 @@
-<%= form_for(:company, :url => {:action => 'create', :controller=>"companies"}, :class => "col s12") do |f| %>
+<%= form_for(:company, :url => {:action => 'create', :controller=>"companies"}, :class => "col s12",     :html => {:multipart => true}) do |f| %>
     <div class="row">
       <div class="input-field col s6">
         <%= f.text_field :rut, :class => "validate" %>
@@ -13,6 +13,17 @@
       <div class="input-field col s12">
         <%= f.text_area :description, :class =>  "materialize-textarea" %>
         <%= f.label :description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="file-field input-field col s12">
+        <div class="btn">
+          <span>File</span>
+          <%= f.file_field :avatar%>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
       </div>
     </div>
     <div class="row">

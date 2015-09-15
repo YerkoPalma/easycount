@@ -45,6 +45,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem "mongoid", "~> 4.0.0"
 gem 'bson_ext'
 
+gem "mongoid-paperclip", :require => "mongoid_paperclip" 
+
 gem 'materialize-sass'
 
 group :development, :test do  

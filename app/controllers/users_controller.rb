@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # TODO: Definir mecanismo para seleccionar la empresa actual
   end
 
   #get
