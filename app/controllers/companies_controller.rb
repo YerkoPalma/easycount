@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:rut, :name, :description, :avatar)
+      params.require(:company).permit(:rut, :name, :description, :avatar, :selected)
     end
 
     def custom_layout

@@ -19,6 +19,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.has_companies?
+      @company = @user.companies.find_by({:selected =>  true})
+    end
     # TODO: Definir mecanismo para seleccionar la empresa actual
   end
 

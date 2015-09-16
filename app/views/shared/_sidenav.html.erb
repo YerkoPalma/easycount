@@ -4,7 +4,7 @@
     <a href="#!" class="collection-item">
     <div class="row valign-wrapper">
       <div class="col s12">
-        <img id="company-logo" class="center-align circle responsive-img" src="http://placehold.it/100x100">
+        <%= image_tag @company.avatar.url, :class => "center-align circle responsive-img", :id => "company-logo" %>        
       </div>
     </div>
     <div class="row valign-wrapper">
