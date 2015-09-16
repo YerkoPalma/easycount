@@ -45,11 +45,12 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem "mongoid", "~> 4.0.0"
 gem 'bson_ext'
 
-gem "mongoid-paperclip", :require => "mongoid_paperclip" 
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem 'aws-sdk', '~> 1.3.4'
 
 gem 'materialize-sass'
 
-group :development, :test do  
+group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'capybara'
 end

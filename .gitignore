@@ -23,3 +23,6 @@
 
 #Ignore mongod starter files
 mongod
+
+#Ignore images uploaded by paperclip
+/public/system

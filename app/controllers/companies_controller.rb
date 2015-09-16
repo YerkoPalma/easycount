@@ -1,12 +1,12 @@
 class CompaniesController < ApplicationController
-  before_action :signed_in_user, only: [:new  ]
+  before_action :signed_in_user, only: [:new ]
 
   layout :custom_layout
 
   def new
     @user = User.find(params[:user_id])
   end
-  
+
   def create
     @user = User.find(params[:user_id])
     @company = @user.companies.new(company_params)
@@ -22,9 +22,9 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:rut, :name, :description)
+      params.require(:company).permit(:rut, :name, :description, :avatar)
     end
-  
+
     def custom_layout
       signed_in? ?  "dashboard" : "application"
     end
