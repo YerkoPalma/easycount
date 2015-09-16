@@ -10,6 +10,8 @@ class CompaniesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @company = @user.companies.new(company_params)
+    #des-selecciono las compañias anteriores
+    @user.update_attributes("companies.selected" => false)
     if @company.save
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       redirect_to @user
