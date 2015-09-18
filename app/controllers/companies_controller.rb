@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  before_action :signed_in_user, only: [:new ]
+  before_action :signed_in_user, only: [:new, :index ]
+  # before_action :correct_user,   only: [:edit, :update, :update_password]
 
   layout :custom_layout
 
@@ -7,11 +8,16 @@ class CompaniesController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @companies = @user.companies
+  end
+
   def create
     @user = User.find(params[:user_id])
     @company = @user.companies.new(company_params)
     #des-selecciono las compañias anteriores
-    @user.update_attributes("companies.selected" => false)
+    #@user.update_attributes("companies.selected" => false)
     if @company.save
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       redirect_to @user
@@ -39,7 +45,7 @@ class CompaniesController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:user_id])
       redirect_to(root_url) unless current_user?(@user)
     end
 

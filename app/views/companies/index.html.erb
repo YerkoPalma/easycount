@@ -1,0 +1,22 @@
+
+<div class="row">
+  <% @companies.each do |company| %>
+    <div class="col s12 m4">
+      <div class="card small">
+        <div class="card-image">
+          <%= image_tag company.avatar.url, :class => "responsive-img" %>
+          <span class="card-title"><%= company.name %></span>
+        </div>
+        <div class="card-content">
+          <p><%= company.description %></p>
+        </div>
+        <div class="card-action">
+          <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Seleccionar" href="#"><i class="small mdi-action-done"></i></a>
+          <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Ver" href="#"><i class="small mdi-image-remove-red-eye"></i></a>
+          <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Editar" href="#"><i class="small mdi-editor-mode-edit"></i></a>
+          <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#"><i class="small mdi-action-delete"></i></a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
