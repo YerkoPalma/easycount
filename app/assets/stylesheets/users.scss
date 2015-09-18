@@ -1,3 +1,49 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box-pane{
+
+    height: 80%;
+    padding: 10px;
+    padding-left: 25px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+  .box {
+    float: left;
+    position: relative;
+    margin: 10px;
+    width: 25%;
+
+    .presentation {
+        position: absolute;
+        z-index: 20;
+        width: 100%;
+        height: 97%;
+        color: transparent;
+        text-align: center;
+        hr {
+            width: 0px;
+            border-width: 0px;
+        }
+        p{
+          word-wrap: break-word;
+          
+        }
+        &:hover {
+            color: #ffffff;
+            background-color: rgba(0,0,0,0.4);
+            hr {
+                width: 200px;
+                border-width: 1px;
+            }
+        }
+    }
+    img.company{
+      width: 100%;
+      height: 15em;
+    }
+  }
+}
