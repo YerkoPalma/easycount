@@ -1,18 +1,10 @@
 <%if @user.has_companies? %>
   <div class="collection">
 
-    <a href="#!" class="collection-item">
-    <div class="row valign-wrapper">
-      <div class="col s12">
-        <%= image_tag @user.companies.find_by({:selected =>  true}).avatar.url, :class => "center-align circle responsive-img", :id => "company-logo" %>
-      </div>
-    </div>
-    <div class="row valign-wrapper">
-      <div class="col s12">
-        <h5 class="center-align"><%= @user.companies.find_by({:selected =>  true}).name %></h5>
-      </div>
-    </div>
-    </a>
+    <%= link_to raw("<div class='row valign-wrapper'>      <div class='col s12'>" + image_tag(@company.avatar.url, :class => 'center-align circle responsive-img', :id => 'company-logo' )+ "      </div>    </div>    <div class='row valign-wrapper'>      <div class='col s12'>        <h5 class='center-align'>" + @company.name + "</h5>      </div>    </div>" ),
+    user_company_path(@user, @company ),
+    class: "collection-item" %>
+
     <%= link_to "Agregar nueva empresa", new_user_company_path(@current_user), class: "collection-item"%>
     <%= link_to "Mis empresas", user_companies_path(@current_user), class: "collection-item"%>
   </div>

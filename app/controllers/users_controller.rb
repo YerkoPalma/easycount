@@ -21,12 +21,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.has_companies?
       @companies = @user.companies
+      @company = @user.companies.find_by({:selected =>  true})
     end
   end
 
   #get
   def change_password
     @user = User.find(params[:id])
+    if @user.has_companies?
+      @companies = @user.companies
+      @company = @user.companies.find_by({:selected =>  true})
+    end
   end
 
   #post
