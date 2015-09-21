@@ -8,7 +8,8 @@ class CompaniesController < ApplicationController
     @user = User.find(params[:user_id])
     if @user.has_companies?
       @companies = @user.companies
-      @company = @user.companies.find_by({:selected =>  true})
+      @current_company = @user.companies.find_by({:selected =>  true})
+      @company = Company.new
     end
   end
 
@@ -16,7 +17,7 @@ class CompaniesController < ApplicationController
     @user = User.find(params[:user_id])
     if @user.has_companies?
       @companies = @user.companies
-      @company = @user.companies.find_by({:selected =>  true})
+      @current_company = @user.companies.find_by({:selected =>  true})
     end
   end
 
@@ -24,7 +25,9 @@ class CompaniesController < ApplicationController
     @user = User.find(params[:user_id])
     if @user.has_companies?
       @companies = @user.companies
-      @company = @user.companies.find_by({:selected =>  true})
+      @current_company = @user.companies.find_by({:selected =>  true})
+      #The company being showed
+      @company = User.companies.find(params[:id])
     end
   end
 

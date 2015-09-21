@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.has_companies?
       @companies = @user.companies
-      @company = @user.companies.find_by({:selected =>  true})
+      @current_company = @user.companies.find_by({:selected =>  true})
     end
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.has_companies?
       @companies = @user.companies
-      @company = @user.companies.find_by({:selected =>  true})
+      @current_company = @user.companies.find_by({:selected =>  true})
     end
   end
 
