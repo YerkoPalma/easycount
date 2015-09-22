@@ -1,8 +1,8 @@
 <%if @user.has_companies? %>
   <div class="collection">
 
-    <%= link_to raw("<div class='row valign-wrapper'>      <div class='col s12'>" + image_tag(@current_company.avatar.url, :class => 'center-align circle responsive-img', :id => 'company-logo' )+ "      </div>    </div>    <div class='row valign-wrapper'>      <div class='col s12'>        <h5 class='center-align'>" + @current_company.name + "</h5>      </div>    </div>" ),
-    user_company_path(@user, @current_company ),
+    <%= link_to raw("<div class='row valign-wrapper'>      <div class='col s12'>" + image_tag(@company.avatar.url, :class => 'center-align circle responsive-img', :id => 'company-logo' )+ "      </div>    </div>    <div class='row valign-wrapper'>      <div class='col s12'>        <h5 class='center-align'>" + @company.name + "</h5>      </div>    </div>" ),
+    user_company_path(@user, @company ),
     class: "collection-item" %>
 
     <%= link_to "Agregar nueva empresa", new_user_company_path(@current_user), class: "collection-item"%>
