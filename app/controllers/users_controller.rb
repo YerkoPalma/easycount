@@ -17,6 +17,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    if @user.has_companies?
+      @companies = @user.companies
+      @current_company = @user.companies.find_by({:selected =>  true})
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.has_companies?
+      @companies = @user.companies
+      @current_company = @user.companies.find_by({:selected =>  true})
+    end
+
+    if @user.update_attributes(edit_params)
+      flash.now[:success] = "Datos actualizados"
+      #@current_user = @user
+      redirect_to @user
+    else
+      flash.now[:danger] = "No se pudo editar!"
+      render 'edit'
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     if @user.has_companies?
@@ -56,6 +81,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :producto, :email, :password,
                                    :password_confirmation, :avatar)
+    end
+
+    def edit_params
+      params.require(:user).permit(:name, :email)
     end
 
     def password_params
