@@ -12,7 +12,8 @@
         </div>
         <div class="card-action">
           <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Seleccionar" href="#"><i class="small mdi-action-done"></i></a>
-          <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Ver" href="#"><i class="small mdi-image-remove-red-eye"></i></a>
+          <%= link_to raw("<i class='small mdi-image-remove-red-eye'></i>"), user_company_path(@user, company), class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Ver' } %>
+          
           <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Editar" href="#"><i class="small mdi-editor-mode-edit"></i></a>
           <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#"><i class="small mdi-action-delete"></i></a>
         </div>

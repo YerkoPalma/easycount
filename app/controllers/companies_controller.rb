@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
       @companies = @user.companies
       @current_company = @user.companies.find_by({:selected =>  true})
       #The company being showed
-      @company = User.companies.find(params[:id])
+      @company = @user.companies.find(params[:id])
     end
   end
 
