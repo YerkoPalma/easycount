@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :signed_in_user, only: [:new, :index, :show ]
+  before_action :signed_in_user, only: [:new, :index, :show, :select ]
   # before_action :correct_user,   only: [:edit, :update, :update_password]
 
   layout :custom_layout
@@ -11,6 +11,20 @@ class CompaniesController < ApplicationController
       @current_company = @user.companies.find_by({:selected =>  true})
       @company = Company.new
     end
+  end
+
+  def select
+    @user = User.find(params[:user_id])
+    @companies = @user.companies
+
+    #deselect current selected company
+    @old_company = @user.companies.find_by({:selected =>  true})
+    @old_company.update_attributes(:selected => false)
+    #select company
+    @current_company = @user.companies.find(params[:company_id])
+    @current_company.update_attributes(:selected => true)
+
+    render "index"
   end
 
   def index
