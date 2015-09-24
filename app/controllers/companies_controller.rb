@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :signed_in_user, only: [:new, :index, :show, :select ]
+  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit ]
   # before_action :correct_user,   only: [:edit, :update, :update_password]
 
   layout :custom_layout
@@ -12,7 +12,16 @@ class CompaniesController < ApplicationController
       @company = Company.new
     end
   end
-
+  
+  def edit
+    @user = User.find(params[:user_id])
+    if @user.has_companies?
+      @companies = @user.companies
+      @company = @user.companies.find(params[:id])
+      @current_company = @user.companies.find_by({:selected =>  true})
+    end
+  end
+  
   def select
     @user = User.find(params[:user_id])
     @companies = @user.companies
