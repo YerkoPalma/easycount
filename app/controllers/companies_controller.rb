@@ -34,6 +34,12 @@ class CompaniesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @company = @user.companies.new(company_params)
+
+    @current_company = @user.companies.find_by({:selected =>  true}) rescue nil
+
+    if @current_company.nil?
+      @company.update_attributes(:selected => true)
+    end
     #des-selecciono las compañias anteriores
     #@user.update_attributes("companies.selected" => false)
     if @company.save
