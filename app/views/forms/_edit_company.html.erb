@@ -1,0 +1,35 @@
+<%= form_for(:company, :url => {:action => 'update'}, :method => "put", :class => "col s12",     :html => {:multipart => true}) do |f| %>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :rut, :class => "validate" %>
+        <%= f.label :rut %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :name, :class => "validate" %>
+        <%= f.label :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_area :description, :class =>  "materialize-textarea" %>
+        <%= f.label :description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="file-field input-field col s12">
+        <div class="btn">
+          <span>File</span>
+          <%= f.file_field :avatar%>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        </button>
+      </div>
+    </div>
+  <% end %>

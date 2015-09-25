@@ -22,6 +22,22 @@ class CompaniesController < ApplicationController
     end
   end
   
+  def update
+    @user = User.find(params[:user_id])
+    @companies = @user.companies
+    @current_company = @user.companies.find_by({:selected =>  true})
+    @company = @user.companies.find(params[:id])
+    
+    if @company.update_attributes(company_params) 
+      flash.now[:success] = "Datos actualizados"
+      #@current_user = @user
+      redirect_to user_company_path(@user,@company)
+    else
+      flash.now[:danger] = "No se pudo editar!"
+      render 'edit'
+    end
+  end
+  
   def select
     @user = User.find(params[:user_id])
     @companies = @user.companies
