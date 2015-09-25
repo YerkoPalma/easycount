@@ -21,9 +21,18 @@
 
           <%= link_to raw("<i class='small mdi-editor-mode-edit'></i>"), edit_user_company_path(@user, company), class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Editar' } %>
           
-          <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#"><i class="small mdi-action-delete"></i></a>
+          <a class="tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#modal1"><i class="small mdi-action-delete"></i></a>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>

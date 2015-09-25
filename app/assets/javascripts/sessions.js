@@ -1,4 +1,5 @@
-$(document).on('ready page:change', function() {
+$(document).on('ready', function() {
     Waves.displayEffect();
     $(".button-collapse").sideNav();
+    $('.modal-trigger').leanModal();
   });
