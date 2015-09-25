@@ -62,7 +62,13 @@ class UsersController < ApplicationController
   #post
   def update_password
     @user = User.find(params[:id])
-    if params[:user][:old_password] == User.digest(@user.password_digest)
+    
+    if @user.has_companies?
+      @companies = @user.companies
+      @current_company = @user.companies.find_by({:selected =>  true})
+    end
+    
+    if @user.authenticate(params[:old_password])
       if @user.update_attributes(password_params)
         flash.now[:success] = "Contraseña actualizada"
         redirect_to @user
