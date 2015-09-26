@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  include CompaniesHelper
   before_action :signed_in_user, only: [:new, :index, :show, :select, :edit ]
   # before_action :correct_user,   only: [:edit, :update, :update_password]
 
@@ -94,21 +95,5 @@ class CompaniesController < ApplicationController
   private
     def company_params
       params.require(:company).permit(:rut, :name, :description, :avatar, :selected)
-    end    
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to root_url, notice: "Please sign in."
-      end
-    end
-
-    def correct_user
-      @user = User.find(params[:user_id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
     end
 end
