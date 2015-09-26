@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
-  
+
   before_action :signed_in_user, only: [:index, :edit, :update, :change_password, :update_password  ]
 	before_action :correct_user,   only: [:edit, :update, :update_password]
 	before_action :admin_user,     only: :destroy
@@ -20,19 +20,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init
 
     if @user.update_attributes(edit_params)
       flash.now[:success] = "Datos actualizados"
@@ -45,30 +37,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init
   end
 
   #get
   def change_password
-    @user = User.find(params[:id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init
   end
 
   #post
   def update_password
-    @user = User.find(params[:id])
-
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init
 
     if @user.authenticate(params[:old_password])
       if @user.update_attributes(password_params)
