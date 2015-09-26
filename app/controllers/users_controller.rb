@@ -62,12 +62,12 @@ class UsersController < ApplicationController
   #post
   def update_password
     @user = User.find(params[:id])
-    
+
     if @user.has_companies?
       @companies = @user.companies
       @current_company = @user.companies.find_by({:selected =>  true})
     end
-    
+
     if @user.authenticate(params[:old_password])
       if @user.update_attributes(password_params)
         flash.now[:success] = "Contraseña actualizada"
@@ -97,9 +97,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    def custom_layout
-      signed_in? ?  "dashboard" : "application"
-    end
     # Before filters
 
     def signed_in_user

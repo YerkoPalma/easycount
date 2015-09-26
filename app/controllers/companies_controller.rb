@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
       @company = Company.new
     end
   end
-  
+
   def edit
     @user = User.find(params[:user_id])
     if @user.has_companies?
@@ -21,14 +21,14 @@ class CompaniesController < ApplicationController
       @current_company = @user.companies.find_by({:selected =>  true})
     end
   end
-  
+
   def update
     @user = User.find(params[:user_id])
     @companies = @user.companies
     @current_company = @user.companies.find_by({:selected =>  true})
     @company = @user.companies.find(params[:id])
-    
-    if @company.update_attributes(company_params) 
+
+    if @company.update_attributes(company_params)
       flash.now[:success] = "Datos actualizados"
       #@current_user = @user
       redirect_to user_company_path(@user,@company)
@@ -37,7 +37,7 @@ class CompaniesController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def select
     @user = User.find(params[:user_id])
     @companies = @user.companies
@@ -94,11 +94,7 @@ class CompaniesController < ApplicationController
   private
     def company_params
       params.require(:company).permit(:rut, :name, :description, :avatar, :selected)
-    end
-
-    def custom_layout
-      signed_in? ?  "dashboard" : "application"
-    end
+    end    
 
     def signed_in_user
       unless signed_in?
