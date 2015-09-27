@@ -1,7 +1,7 @@
 
 <nav>
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
+    <%= link_to raw("<i class='mdi-action-home left'></i>") + "Inicio", dashboard_path, class: "brand-logo" %>    
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="white-text mdi-navigation-menu"></i></a>
     <ul class="right hide-on-med-and-down">
       <li><%= link_to raw("<i class='mdi-social-person left'></i>") + @current_user.name, @current_user, class: "tooltipped", :data => { :position => 'bottom', :delay => '50', :tooltip => 'Mi perfil' } %></li>

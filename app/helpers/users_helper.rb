@@ -1,12 +1,5 @@
 module UsersHelper
-  # Before filters
-
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to root_url, notice: "Please sign in."
-    end
-  end
+  # Before filters  
 
   def correct_user
     @user = User.find(params[:id])

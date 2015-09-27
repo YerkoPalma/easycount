@@ -57,8 +57,7 @@ class CompaniesController < ApplicationController
     if @current_company.nil?
       @company.update_attributes(:selected => true)
     end
-    #des-selecciono las compañias anteriores
-    #@user.update_attributes("companies.selected" => false)
+    
     if @company.save
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       redirect_to @user
