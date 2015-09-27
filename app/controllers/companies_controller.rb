@@ -6,28 +6,15 @@ class CompaniesController < ApplicationController
   layout :custom_layout
 
   def new
-    @user = User.find(params[:user_id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-      @company = Company.new
-    end
+    init "new"
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @company = @user.companies.find(params[:id])
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init "edit"
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @companies = @user.companies
-    @current_company = @user.companies.find_by({:selected =>  true})
-    @company = @user.companies.find(params[:id])
+    init "update"
 
     if @company.update_attributes(company_params)
       flash.now[:success] = "Datos actualizados"
@@ -54,21 +41,11 @@ class CompaniesController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:user_id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-    end
+    init "index"
   end
 
   def show
-    @user = User.find(params[:user_id])
-    if @user.has_companies?
-      @companies = @user.companies
-      @current_company = @user.companies.find_by({:selected =>  true})
-      #The company being showed
-      @company = @user.companies.find(params[:id])
-    end
+    init "show"
   end
 
   def create
