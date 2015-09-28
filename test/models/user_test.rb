@@ -3,11 +3,13 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
+    #to prevent duplicate email
+    User.delete_all
     @user = User.new(name: "Example", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
   end
 
   test "should be valid" do
-    assert @user.valid?
+    assert @user.valid?, @user.errors.full_messages[0]
   end
 
   test "name should be present" do
