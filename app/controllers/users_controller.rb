@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
     	flash[:success] = "Bienvenido a EasyCount!"
-      redirect_to @user
+      redirect_to dashboard_path
     else
       flash.now[:error] = "No se pudo conectar"
       render 'pages/index'
