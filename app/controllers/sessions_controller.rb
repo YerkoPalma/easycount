@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
       redirect_back_or dashboard_path
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      render 'pages/index'
+      redirect_to root_path
     end
 
   rescue
   	flash.now[:danger] = 'Invalid email/password combination'
-    render 'pages/index'
+    redirect_to root_path
   end
 
   def destroy

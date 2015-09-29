@@ -20,4 +20,33 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  error: 
+    one: "%{count} error"
+    other: "%{count} errores"
+  mongoid:
+    models:
+      user: "Usuario"
+    attributes:
+      user:
+        password: "La contraseña"
+        name: "El nombre"
+        email: "La dirección de correo"
+        password_confirmation: "La contraseña"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: " no puede ser vacia"
+              too_short: " debe tener mínimo 6 caracteres"
+            password_confirmation:
+              confirmation: " no coincide"
+            name:
+              blank: " no puede ser vacio"
+            email: 
+              blank: " no puede ser vacia"
+              invalid: " es incorrecta"
+              taken: " ya existe"
+              too_long: " debe tener máximo 50 caracteres"
+          
+
