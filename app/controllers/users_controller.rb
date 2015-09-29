@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     	flash[:success] = "Bienvenido a EasyCount!"
       redirect_to dashboard_path
     else
-      flash.now[:error] = "No se pudo conectar"
-      render 'pages/index'
+      flash[:error] = @user.errors
+      redirect_to root_path
     end
   end
 
