@@ -94,3 +94,8 @@ footer.page-footer {
   padding: 1em;
   margin-bottom: 1em;
 }
+.alert{
+  position:fixed;
+  z-index: 9999;
+  width: 100%;
+}
