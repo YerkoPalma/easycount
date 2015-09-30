@@ -94,8 +94,17 @@ footer.page-footer {
   padding: 1em;
   margin-bottom: 1em;
 }
-.alert{
+.alert.error, .alert.danger{
   position:fixed;
   z-index: 9999;
   width: 100%;
+}
+i.close{
+  float: right;
+  cursor: pointer;
+  color: #ffab40;
+  margin-top: -10px;
+  &:hover {
+    color: #ffd8a6;
+  }
 }

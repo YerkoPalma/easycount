@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or dashboard_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash[:danger] = !user.nil? && user.errors.any? ? user.errors : 'Invalid email/password combination'
       redirect_to root_path
     end
 
   rescue
-  	flash.now[:danger] = 'Invalid email/password combination'
+  	flash[:danger] = !user.nil? && user.errors.any? ? user.errors : 'Invalid email/password combination'
     redirect_to root_path
   end
 
