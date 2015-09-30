@@ -11,6 +11,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                password_confirmation: "bar" }
     end
     assert_template 'pages/index'
+    assert_includes flash.keys, :error
   end
   
   test "valid signup information" do
@@ -22,5 +23,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             password_confirmation: "password" }
     end
     assert_template 'pages/dashboard'
+    assert_not_includes flash.keys, :error
   end
 end
