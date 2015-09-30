@@ -33,6 +33,12 @@ class User
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def User.getPass(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   private
 
     def create_remember_token
