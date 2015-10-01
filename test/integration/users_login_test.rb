@@ -3,7 +3,10 @@ require 'test_helper'
 class UsersLoginTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = Users(:michael)
+    User.delete_all
+    attrs = attributes_for(:user)
+    @user = User.new(attrs)
+    @user.save
   end
   
   test "login with invalid information" do
@@ -19,7 +22,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with valid information" do
     get root_path
     post sessions_path, session: { email: @user.email, password: 'password' }
-    assert_redirected_to dashboard_path
+    assert_redirected_to dashboard_path, flash[:danger]
     follow_redirect!
     assert_template 'pages/dashboard'
     assert_select "a[href=?]", sessions_path, count: 0

@@ -53,4 +53,5 @@ gem 'materialize-sass'
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'capybara'
+  gem "factory_girl_rails", "~> 4.0"
 end
