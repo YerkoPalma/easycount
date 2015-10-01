@@ -2,6 +2,10 @@ require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
 
+  def setup
+    User.delete_all
+  end
+  
   test "invalid signup information" do
     get root_path
     assert_no_difference 'User.count' do
@@ -17,13 +21,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "valid signup information" do
     get root_path
     assert_difference 'User.count', 1 do
-      post_via_redirect users_path, user: { name:  "Example User",
-                                            email: "user@example.com",
-                                            password:              "password",
-                                            password_confirmation: "password" }
+      post_via_redirect users_path, user: attributes_for(:user)
     end
     assert_template 'pages/dashboard'
     assert_not_includes flash.keys, :error
-    assert is_logged_in?
+    @user = User.find(build(:user).name)
+    assert is_logged_in?(@user) , "c: #{cookies[:remember_token]}\nu: #{@user.remember_token}"
   end
 end
