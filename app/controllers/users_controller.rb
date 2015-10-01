@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update_password
     init
 
-    if @user.authenticate(params[:old_password])
+    if @user.authenticate(params[:user][:old_password])
       if @user.update_attributes(password_params)
         flash.now[:success] = "Contraseña actualizada"
         redirect_to @user

@@ -24,5 +24,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'pages/dashboard'
     assert_not_includes flash.keys, :error
+    assert is_logged_in?
   end
 end
