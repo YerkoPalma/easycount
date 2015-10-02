@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include UsersHelper
 
   before_action :signed_in_user, only: [:index, :edit, :update, :change_password, :update_password  ]
-	before_action :correct_user,   only: [:edit, :update, :update_password]
+	before_action :correct_user,   only: [:edit, :update, :change_password, :update_password]
 	before_action :admin_user,     only: :destroy
 
   layout :custom_layout
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
     if @user.authenticate(params[:user][:old_password])
       if @user.update_attributes(password_params)
-        flash.now[:success] = "Contraseña actualizada"
+        flash[:success] = "Contraseña actualizada"
         redirect_to @user
       else
         flash.now[:danger] = "No se pudo editar"

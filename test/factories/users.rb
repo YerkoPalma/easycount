@@ -7,4 +7,10 @@ FactoryGirl.define do
     password_confirmation "password"
   end
   
+  factory :other, class: User do
+    email "foo@bar.com"
+    name "FooBarUsr"
+    password "foobar"
+    password_confirmation "foobar"
+  end
 end
