@@ -10,6 +10,7 @@ Easycount::Application.routes.draw do
   match '/:id/update_password', to: 'users#update_password', via: 'post', as: :update_password
   match '/user/:user_id/select/:company_id', to: 'companies#select', via: 'post', as: :select_company
   match '/dashboard', to: 'pages#dashboard', via: 'get', as: :dashboard
+  match '/users/:user_id/companies/:id', to: 'companies#destroy', via: 'delete', as: :destroy_company
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -57,7 +57,7 @@ class CompaniesController < ApplicationController
     if @current_company.nil?
       @company.update_attributes(:selected => true)
     end
-    
+
     if @company.save
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       redirect_to @user
@@ -67,6 +67,14 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @company = @user.companies.find(params[:id])
+    if @company.delete
+      render "index"
+    end
+    flash[:danger] = "No se pudo eliminar la empresa"
+  end
 
   private
     def company_params

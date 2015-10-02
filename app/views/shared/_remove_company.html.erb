@@ -1,0 +1,11 @@
+<div id="remove_company" class="modal">
+  <div class="modal-content">
+    <h4>Eliminar Empresa</h4>
+    <p>¿Esta seguro que desea eliminar esta empresa?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    <%= link_to "Aceptar", destroy_company_path(@user,@current_company), method: "delete", class: "modal-action modal-close waves-effect waves-green btn-flat"%>
+
+  </div>
+</div>
