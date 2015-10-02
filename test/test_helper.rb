@@ -5,8 +5,8 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   include FactoryGirl::Syntax::Methods
-  
-  def is_logged_in?(user)
-    cookies[:remember_token] == user.remember_token
+
+  def is_logged_in?
+    !session[:user_id].nil?
   end
 end

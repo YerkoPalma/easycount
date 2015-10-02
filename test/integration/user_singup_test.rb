@@ -5,7 +5,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   def setup
     User.delete_all
   end
-  
+
   test "invalid signup information" do
     get root_path
     assert_no_difference 'User.count' do
@@ -17,7 +17,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'pages/index'
     assert_includes flash.keys, :error
   end
-  
+
   test "valid signup information" do
     get root_path
     assert_difference 'User.count', 1 do
@@ -26,6 +26,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'pages/dashboard'
     assert_not_includes flash.keys, :error
     @user = User.find(build(:user).name)
-    assert is_logged_in?(@user) , "c: #{cookies[:remember_token]}\nu: #{@user.remember_token}"
+    assert is_logged_in? , "c: #{cookies[:remember_token]}\nu: #{@user.remember_token}"
   end
 end
