@@ -49,6 +49,7 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 
 gem 'materialize-sass'
+gem 'rut_chileno'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
