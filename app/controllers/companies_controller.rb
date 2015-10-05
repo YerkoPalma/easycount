@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   include CompaniesHelper
-  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit ]
+  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create ]
   # before_action :correct_user,   only: [:edit, :update, :update_password]
 
   layout :custom_layout
@@ -62,8 +62,8 @@ class CompaniesController < ApplicationController
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       redirect_to @user
     else
-      flash.now[:error] = "No se ingresar tu empresa"
-      render 'pages/index'
+      flash[:danger] = "No se pudo ingresar tu empresa"
+      redirect_to @user
     end
   end
 

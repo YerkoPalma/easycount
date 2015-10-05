@@ -29,7 +29,11 @@ class CompanyTest < ActiveSupport::TestCase
     @company.rut = "     "
     assert_not @company.valid?
   end
-
+  test "rut should be unique" do
+    duplicate_company = @company.dup
+    @company.save
+    assert_not duplicate_company.valid?
+  end
   test "rut should be more than 72000000" do
     @company.rut = "719999991"
     assert_not @company.valid?
