@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   include CompaniesHelper
-  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create, :update ]
+  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create, :update, :destroy ]
   # before_action :correct_user,   only: [:edit, :update, :update_password]
 
   layout :custom_layout
@@ -42,6 +42,7 @@ class CompaniesController < ApplicationController
 
   def index
     init "index"
+    redirect_to @user unless @user.has_companies?
   end
 
   def show
@@ -69,6 +70,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
+    @companies = @user.companies
     @company = @user.companies.find(params[:id])
     if @company.delete
       render "index"

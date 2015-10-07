@@ -56,4 +56,5 @@ group :development, :test do
   gem 'capybara'
   gem "factory_girl_rails", "~> 4.0"
   gem 'rails-footnotes', '~> 4.0'
+  gem 'mongoid-embedded-errors'
 end

@@ -28,6 +28,7 @@ class Company
   field :avatar, type: String
   field :description, type: String
   field :selected, type: Boolean
+  field :_id, type: String, default: ->{ rut }
 
   validates_with DVValidator
 

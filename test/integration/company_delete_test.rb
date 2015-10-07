@@ -7,17 +7,33 @@ class CompanyDeleteTest < ActionDispatch::IntegrationTest
     attrs = attributes_for(:user)
     @user = User.new(attrs)
     @user.save
-
+    
+    attrs = attributes_for(:other)
+    @other_user = User.new(attrs)
+    @other_user.save
+    
     @company = @user.companies.new(attributes_for(:company))
     @company.save
   end
 
   test "unsuccessful company delete" do
-
+    log_in_as(@other_user)
+    get user_companies_path(@user)
+    assert_template "companies/index"
+    assert_select "a[href=?]", destroy_company_path(@user, @company)
+    delete destroy_company_path(@user, @company)
+    assert_template "users/show"
   end
 
   test "successful company delete" do
-
+    log_in_as(@user)
+    get user_companies_path(@user)
+    assert_template "companies/index"
+    assert_select "a[href=?]", destroy_company_path(@user, @company)
+    delete destroy_company_path(@user, @company)
+    assert_template "companies/index"
+    assert_not flash.empty?
+    assert_includes flash.keys, :danger
   end
 
   test "unsuccessful company edit" do

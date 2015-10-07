@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include ActiveModel::SecurePassword
+  include Mongoid::EmbeddedErrors
 
   field :email, type: String
   field :name, type: String

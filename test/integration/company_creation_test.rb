@@ -29,12 +29,13 @@ class CompanyCreationTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get new_user_company_path(@user)
     assert_template "companies/new"
-    assert_difference "@user.companies.count", 1, @user.errors.full_messages[0] do
-      post_via_redirect user_companies_path(@user), company: {rut: "723456789",
+    assert_difference "@user.companies.count", 1, @user.errors.messages do
+      post_via_redirect "/users/#{@user.id}/companies", company: {rut: "723456789",
                                                name: "Acme",
-                                               description: ""}
+                                               description: "Some description",
+                                               contador: @user.id      }
     end
-
+    #assert_redirected_to user_company_path()
     assert_template "users/show"
     assert_not_includes flash.keys, :danger
   end
