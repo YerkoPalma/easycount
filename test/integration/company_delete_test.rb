@@ -17,12 +17,16 @@ class CompanyDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful company delete" do
-    log_in_as(@other_user)
-    get user_companies_path(@user)
-    assert_template "companies/index"
-    assert_select "a[href=?]", destroy_company_path(@user, @company)
-    delete destroy_company_path(@user, @company)
-    assert_template "users/show"
+    #session.delete(:return_to) if !session[:return_to].nil? 
+    #puts session
+    log_in_as(@other_user, {:password => "foobar"})
+    get_via_redirect user_companies_path(@other_user)
+    #assert_template "companies/index" , user_companies_path(@other_user)
+    #assert_not_select "a[href=?]", destroy_company_path(@user, @company)
+    assert_no_difference '@user.companies.count' do
+      delete destroy_company_path(@user, @company)
+    end
+    
   end
 
   test "successful company delete" do
@@ -30,10 +34,13 @@ class CompanyDeleteTest < ActionDispatch::IntegrationTest
     get user_companies_path(@user)
     assert_template "companies/index"
     assert_select "a[href=?]", destroy_company_path(@user, @company)
-    delete destroy_company_path(@user, @company)
+    assert_difference '@user.companies.count', -1 do
+      delete destroy_company_path(@user, @company)
+    end
+    #delete destroy_company_path(@user, @company)
     assert_template "companies/index"
     assert_not flash.empty?
-    assert_includes flash.keys, :danger
+    assert_includes flash.keys, :success
   end
 
   test "unsuccessful company edit" do

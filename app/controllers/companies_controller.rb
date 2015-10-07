@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   include CompaniesHelper
   before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create, :update, :destroy ]
-  # before_action :correct_user,   only: [:edit, :update, :update_password]
+  before_action :correct_user,   only: [ :destroy]
 
   layout :custom_layout
 
@@ -73,9 +73,13 @@ class CompaniesController < ApplicationController
     @companies = @user.companies
     @company = @user.companies.find(params[:id])
     if @company.delete
+      flash[:success] = "Empresa eliminada exitosamente"
+      redirect_to dashboard_path
+    else
+      flash.now[:danger] = "No se pudo eliminar la empresa"
       render "index"
     end
-    flash[:danger] = "No se pudo eliminar la empresa"
+    
   end
 
   private

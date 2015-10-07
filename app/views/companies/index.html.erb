@@ -20,11 +20,13 @@
           <%= link_to raw("<i class='small mdi-image-remove-red-eye'></i>"), user_company_path(@user, company), class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Ver' } %>
 
           <%= link_to raw("<i class='small mdi-editor-mode-edit'></i>"), edit_user_company_path(@user, company), class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Editar' } %>
+          
+          <%= link_to raw("<i class='small mdi-action-delete'></i>"), destroy_company_path(@user, company), method: :delete, class: "tooltipped", :data => { confirm: "You sure?", :position => 'top', :delay => '50', :tooltip => 'Eliminar' } %>
 
-          <a class="tooltipped modal-trigger" data-company-id="<%= company.id %>" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#remove_company"><i class="small mdi-action-delete"></i></a>
+          <!--<a class="tooltipped modal-trigger" data-company-id="<%= company.id %>" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#remove_company"><i class="small mdi-action-delete"></i></a>-->
         </div>
       </div>
     </div>
   <% end %>
 </div>
-<%= render "shared/remove_company" %>
+
