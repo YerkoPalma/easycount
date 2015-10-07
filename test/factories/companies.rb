@@ -4,7 +4,7 @@ FactoryGirl.define do
     rut "723456789"
     name "Acme"
     description "Una empresa Acme"
-    selected false
+    selected true
   end
 
 end

@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   include CompaniesHelper
-  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create ]
+  before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create, :update ]
   # before_action :correct_user,   only: [:edit, :update, :update_password]
 
   layout :custom_layout
