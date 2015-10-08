@@ -32,7 +32,7 @@ class Company
 
   validates_with DVValidator
 
-  has_mongoid_attached_file :avatar
+  has_mongoid_attached_file :avatar, default_url: ActionController::Base.helpers.asset_path('default.jpg')
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   embedded_in :contador, class_name: "User", inverse_of: :companies
