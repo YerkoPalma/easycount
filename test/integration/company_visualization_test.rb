@@ -10,6 +10,7 @@ class CompanyVisualizationTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful company visualization" do
+    log_in_as(@user)
     
   end
   
