@@ -16,18 +16,4 @@
 //= require materialize-sprockets
 //= require_tree .
 
-$(document).ready(function(){
-    $("#primary-content").fadeIn("slow");
-});
-
-document.addEventListener('page:fetch', function() {
-        $("#primary-content").fadeOut();
-        $(".progress").show();
-        console.log("page:fetch");
-});
-
-document.addEventListener('page:load', function() {
-        $(".progress").hide();
-        $("#primary-content").fadeIn("slow");
-        console.log("page:load");
-});
+Turbolinks.enableTransitionCache();

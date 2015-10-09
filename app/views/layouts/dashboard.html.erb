@@ -17,12 +17,7 @@
       <%= render "shared/sidenav" %>
     </div>
     <div class="col s12 m8 l9">
-      <div class="progress" style="display: none;">
-        <div class="indeterminate"></div>
-      </div>
-      <div id="primary-content" style="display: none;">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
   </div>
   <%= debug(params) if Rails.env.development? %>
