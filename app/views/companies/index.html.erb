@@ -12,7 +12,7 @@
         </div>
         <div class="card-action">
           <% if company[:selected] %>
-            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Editar" href="#"><i class="small mdi-action-done teal-text"></i></a>
+            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Empresa seleccionada" href="#"><i class="small mdi-action-done teal-text"></i></a>
           <% else %>
             <%= link_to raw("<i class='small mdi-action-done '></i>"), select_company_path( @user, company),:method => :post, class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Seleccionar' } %>
           <% end %>
@@ -20,7 +20,7 @@
           <%= link_to raw("<i class='small mdi-image-remove-red-eye'></i>"), user_company_path(@user, company), class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Ver' } %>
 
           <%= link_to raw("<i class='small mdi-editor-mode-edit'></i>"), edit_user_company_path(@user, company), class: "tooltipped", :data => { :position => 'top', :delay => '50', :tooltip => 'Editar' } %>
-          
+
           <%= link_to raw("<i class='small mdi-action-delete'></i>"), destroy_company_path(@user, company), method: :delete, class: "tooltipped", :data => { confirm: "You sure?", :position => 'top', :delay => '50', :tooltip => 'Eliminar' } %>
 
           <!--<a class="tooltipped modal-trigger" data-company-id="<%= company.id %>" data-position="top" data-delay="50" data-tooltip="Eliminar" href="#remove_company"><i class="small mdi-action-delete"></i></a>-->
@@ -45,7 +45,7 @@
     return link.trigger('click.rails');
   };
   return $.rails.showConfirmDialog = function(link) {
-    
+
     $("#remove_company").openModal();
     return $('#remove_company .confirm').on('click', function() {
       return $.rails.confirmed(link);

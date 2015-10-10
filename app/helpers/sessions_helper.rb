@@ -77,7 +77,8 @@ module SessionsHelper
   def signed_in_user
     unless logged_in?
       store_location
-      redirect_to root_url, notice: "Please sign in."
+      flash.now[:danger] = "Debes estar conectado para acceder acá"
+      redirect_to root_url, danger: "Debes estar conectado para acceder acá."
     end
   end
 end
