@@ -15,6 +15,10 @@ class DVValidator < ActiveModel::Validator
     unless RUT::validar(record.rut)
       record.errors[:rut] << I18n.t(:invalid_rut)
     end
+    
+    unless RUT::validar(record.rut_representante)
+      record.errors[:rut_representante] << I18n.t(:invalid_rut)
+    end
   end
 end
 
@@ -25,6 +29,8 @@ class Company
 
   field :rut, type: String
   field :name, type: String
+  field :rut_representante, type: String
+  field :name_representante, type: String
   field :giro, type: String
   field :direccion, type: String
   field :comuna, type: String

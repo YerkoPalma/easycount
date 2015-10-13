@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(document).on('ready page:change', function() {
+    $('ul.tabs').tabs();
     Turbolinks.enableTransitionCache();    
 });
 
