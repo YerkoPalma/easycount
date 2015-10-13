@@ -12,6 +12,26 @@
       </div>
     </div>
     <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :giro, :class => "validate" %>
+        <%= f.label :giro %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :direccion, :class => "validate" %>
+        <%= f.label :direccion %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :comuna, :class => "validate" %>
+        <%= f.label :comuna %>
+      </div>
+      <div class="input-field col s6">
+        <%= f.text_field :region, :class => "validate" %>
+        <%= f.label :region %>
+      </div>
+    </div>
+    <div class="row">
       <div class="input-field col s12">
         <%= f.text_area :description, :class =>  "materialize-textarea" %>
         <%= f.label :description %>
@@ -20,11 +40,11 @@
     <div class="row">
       <div class="file-field input-field col s12">
         <div class="btn">
-          <span>File</span>
+          <span>Logo</span>
           <%= f.file_field :avatar%>
         </div>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
+          <input class="file-path validate" type="text" >
         </div>
       </div>
     </div>

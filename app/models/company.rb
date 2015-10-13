@@ -25,6 +25,10 @@ class Company
 
   field :rut, type: String
   field :name, type: String
+  field :giro, type: String
+  field :direccion, type: String
+  field :comuna, type: String
+  field :region, type: String
   field :avatar, type: String
   field :description, type: String
   field :selected, type: Boolean
@@ -40,4 +44,8 @@ class Company
   validates :contador, presence: true
   validates :name, presence: true
   validates :rut, rut: true
+  validates :giro, presence: true
+  validates :direccion, presence: true
+  validates :comuna, presence: true
+  validates :region, presence: true
 end

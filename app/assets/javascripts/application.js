@@ -16,4 +16,7 @@
 //= require materialize-sprockets
 //= require_tree .
 
-Turbolinks.enableTransitionCache();
+$(document).on('ready page:change', function() {
+    Turbolinks.enableTransitionCache();    
+});
+
