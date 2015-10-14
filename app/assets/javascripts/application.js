@@ -18,6 +18,7 @@
 
 $(document).on('ready page:change', function() {
     $('ul.tabs').tabs();
+    $('select').material_select();
     Turbolinks.enableTransitionCache();    
 });
 

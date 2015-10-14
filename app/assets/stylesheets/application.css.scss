@@ -13,3 +13,12 @@
  */
 
 @import "materialize";
+
+.select-wrapper + label {
+    position: absolute;
+    top: -14px;
+    font-size: 0.8rem;
+}
+.select-wrapper{
+    margin-top:0;
+}

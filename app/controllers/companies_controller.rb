@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
 
   def new
     init "new"
+    get_regiones
   end
 
   def edit

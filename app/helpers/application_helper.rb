@@ -1,4 +1,5 @@
 module ApplicationHelper
+  def get_regiones
   @regiones = [
     {
         :codigo => 15,
@@ -423,5 +424,5 @@ module ApplicationHelper
             ]
     }
 ]
-  
+  end
 end

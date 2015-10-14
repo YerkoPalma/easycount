@@ -25,12 +25,13 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <%= f.text_field :comuna, :class => "validate" %>
-        <%= f.label :comuna %>
+        <% cities_array = @regiones.map { |city| [city[:nombre], city[:codigo]] } %>
+        <%= f.select( :region, options_for_select(cities_array)) %>
+        <%= f.label :region %>
       </div>
       <div class="input-field col s6">
-        <%= f.text_field :region, :class => "validate" %>
-        <%= f.label :region %>
+        <%= f.text_field :comuna, :class => "validate" %>
+        <%= f.label :comuna %>
       </div>
     </div>
     <div class="row">
