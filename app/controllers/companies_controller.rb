@@ -60,12 +60,20 @@ class CompaniesController < ApplicationController
       @company.update_attributes(:selected => true)
     end
 
-    if @company.save
-      flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
-      redirect_to @user
-    else
-      flash[:danger] = "No se pudo ingresar tu empresa"
-      redirect_to @user
+    respond_to do |format|
+      if @company.save
+          format.html {
+            flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
+            redirect_to @user
+          }
+          format.js {}
+          format.json {render json:@company, status: :created, location: @company}
+      else
+        format.html {
+          flash[:danger] = "No se pudo ingresar tu empresa"
+          redirect_to @user
+        }
+      end
     end
   end
 
