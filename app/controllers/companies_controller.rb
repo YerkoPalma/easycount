@@ -58,11 +58,14 @@ class CompaniesController < ApplicationController
 
     if @current_company.nil?
       @company.update_attributes(:selected => true)
+      @current_company = @company
     end
 
     if @company.save
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
-      redirect_to @user
+      get_regiones
+      @company_tab = "empresa"
+      render "new"
     else
       flash[:danger] = "No se pudo ingresar tu empresa"
       redirect_to @user

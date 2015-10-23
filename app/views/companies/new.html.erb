@@ -13,3 +13,10 @@
   <div id="fijos" class="col s12">Test 3</div>
   
 </div>
+<% if !@company_tab.nil? %>
+  <script>
+    $(document).ready(function(){
+      $('ul.tabs').tabs('select_tab', '<%= @company_tab %>');
+    });
+  </script>
+<% end %>
