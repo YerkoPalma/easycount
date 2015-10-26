@@ -46,6 +46,9 @@ class Company
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   embedded_in :contador, class_name: "User", inverse_of: :companies
+  has_many :cargos
+  has_many :sucursals
+  has_many :departments
 
   validates :contador, presence: true
   validates :name, presence: true
