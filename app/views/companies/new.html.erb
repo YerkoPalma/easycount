@@ -16,6 +16,7 @@
 <% if !@company_tab.nil? %>
   <script>
     $(document).ready(function(){
+      if ($('a[href="#<%= @company_tab %>"]').parent().hasClass("disabled")) {$('a[href="#<%= @company_tab %>"]').parent().removeClass("disabled")}
       $('ul.tabs').tabs('select_tab', '<%= @company_tab %>');
     });
   </script>
