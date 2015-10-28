@@ -1,0 +1,57 @@
+<%= form_for(@company, :url => {:action => 'create_company_data', :controller=>"companies"}, :class => "col s12") do |f| %>
+<fieldset>
+  <legend>Cargos</legend>
+  <div class="row">
+    <%= f.fields_for :cargos do |cargos_form| %>
+      <div class="input-field col s6">
+        <%= cargos_form.text_field :name, :class => "validate" %>
+        <%= cargos_form.label :name %>
+      </div>
+      <div class="input-field col s6">
+        <%= cargos_form.text_field :code, :class => "validate" %>
+        <%= cargos_form.label :code %>
+      </div>
+    <% end %>
+  </div>
+</fieldset>
+<fieldset>
+  <legend>Sucursales</legend>
+  <div class="row">
+    <%= f.fields_for :sucursals do |sucursales_form| %>
+      <div class="input-field col s4">
+        <%= sucursales_form.text_field :name, :class => "validate" %>
+        <%= sucursales_form.label :name %>
+      </div>
+      <div class="input-field col s4">
+        <%= sucursales_form.text_field :code, :class => "validate" %>
+        <%= sucursales_form.label :code %>
+      </div>
+      <div class="input-field col s4">
+        <%= sucursales_form.text_field :address, :class => "validate" %>
+        <%= sucursales_form.label :address %>
+      </div>
+    <% end %>
+  </div>
+</fieldset>
+<fieldset>
+  <legend>Departamentos/Unidades</legend>
+  <div class="row">
+    <%= f.fields_for :departments do |departments_form| %>
+      <div class="input-field col s6">
+        <%= departments_form.text_field :name, :class => "validate" %>
+        <%= departments_form.label :name %>
+      </div>
+      <div class="input-field col s6">
+        <%= departments_form.text_field :code, :class => "validate" %>
+        <%= departments_form.label :code %>
+      </div>
+    <% end %>
+  </div>
+</fieldset>
+  <div class="row">
+    <div class="input-field col s12">
+      <button class="btn waves-effect waves-light right" type="submit" name="action">Siguiente<i class="mdi-hardware-keyboard-arrow-right right"></i>
+      </button>
+    </div>
+  </div>
+<% end %>

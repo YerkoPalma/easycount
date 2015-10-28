@@ -15,7 +15,7 @@ class DVValidator < ActiveModel::Validator
     unless RUT::validar(record.rut)
       record.errors[:rut] << I18n.t(:invalid_rut)
     end
-    
+
     unless RUT::validar(record.rut_representante)
       record.errors[:rut_representante] << I18n.t(:invalid_rut)
     end
@@ -39,6 +39,7 @@ class Company
   field :description, type: String
   field :selected, type: Boolean
   field :_id, type: String, default: ->{ rut }
+  field :estado_inscripcion, type: String #Determina en que tab quedó de la inscripcion
 
   validates_with DVValidator
 
@@ -47,8 +48,13 @@ class Company
 
   embedded_in :contador, class_name: "User", inverse_of: :companies
   has_many :cargos
+  accepts_nested_attributes_for :cargos
+
   has_many :sucursals
+  accepts_nested_attributes_for :sucursals
+
   has_many :departments
+  accepts_nested_attributes_for :departments
 
   validates :contador, presence: true
   validates :name, presence: true

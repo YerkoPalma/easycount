@@ -1,17 +1,20 @@
 <div class="row" style="padding-top:15px;">
-  
+
   <div class="col s12">
     <ul class="tabs z-depth-1">
       <li class="tab col s4"><a class="active" href="#generales">Datos generales</a></li>
       <li class="tab col s4 disabled "><a href="#empresa">Datos empresa</a></li>
       <li class="tab col s4 disabled "><a href="#fijos">Valores fijos</a></li>
-      
     </ul>
   </div>
   <div id="generales" class="col s12"><%= render "forms/new_company1" %>	</div>
-  <div id="empresa" class="col s12">Test 2</div>
+  <div id="empresa" class="col s12">
+    <% if !@company.nil? %>
+      <%= render "forms/new_company2" %>
+    <% end %>
+  </div>
   <div id="fijos" class="col s12">Test 3</div>
-  
+
 </div>
 <% if !@company_tab.nil? %>
   <script>

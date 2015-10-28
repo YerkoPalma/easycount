@@ -27,11 +27,11 @@
       <div class="input-field col s6">
         <% cities_array = @regiones.map { |city| [city[:nombre], city[:codigo]] } %>
         <%= f.select( :region, options_for_select(cities_array), {}, {}) %>
-        <%= f.label :region, class: "active" %>
+        <%= f.label :region %>
       </div>
       <div class="input-field col s6">
         <%= f.select(:comuna, [], {}, {})  %>
-        <%= f.label :comuna, class: "active" %>
+        <%= f.label :comuna %>
       </div>
     </div>
     <div class="row">

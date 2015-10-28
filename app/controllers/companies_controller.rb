@@ -65,11 +65,23 @@ class CompaniesController < ApplicationController
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       get_regiones
       @company_tab = "empresa"
+      #falta crear los parametros para el siguiente tab
+      @company.cargos.build
+      @company.sucursals.build
+      @company.departments.build
+
+      #falta actualizar la variable que indica el tab actual
       render "new"
     else
       flash[:danger] = "No se pudo ingresar tu empresa"
       redirect_to @user
     end
+  end
+
+  #Falta luego agregar una forma de continuar el ingreso de la empresa
+
+  #completar
+  def create_company_data
   end
 
   def destroy
@@ -83,7 +95,7 @@ class CompaniesController < ApplicationController
       flash.now[:danger] = "No se pudo eliminar la empresa"
       render "index"
     end
-    
+
   end
 
   private
