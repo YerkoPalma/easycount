@@ -47,18 +47,18 @@ class Company
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   embedded_in :contador, class_name: "User", inverse_of: :companies
-  has_many :cargos
+  has_many :cargos, dependent: :delete
   accepts_nested_attributes_for :cargos
 
-  has_many :sucursals
+  has_many :sucursals, dependent: :delete
   accepts_nested_attributes_for :sucursals
 
-  has_many :departments
+  has_many :departments, dependent: :delete
   accepts_nested_attributes_for :departments
 
   validates :contador, presence: true
   validates :name, presence: true
-  validates :rut, rut: true
+  validates :rut, rut: true, uniqueness: true
   validates :giro, presence: true
   validates :direccion, presence: true
   validates :comuna, presence: true

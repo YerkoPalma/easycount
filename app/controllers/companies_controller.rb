@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   include CompaniesHelper
   before_action :signed_in_user, only: [:new, :index, :show, :select, :edit, :create, :update, :destroy ]
-  before_action :correct_user,   only: [ :destroy]
+  before_action :correct_user,   only: [:destroy]
 
   layout :custom_layout
 
@@ -82,6 +82,18 @@ class CompaniesController < ApplicationController
 
   #completar
   def create_company_data
+    @user = User.find(params[:user_id])
+    @current_company = @user.companies.find_by({:selected =>  true})
+    @company = @user.companies.find(params[:id])
+    
+    if @company.update_attributes(company_data_params)
+      flash[:success] = "Datos actualizados"
+      #@current_user = @user
+      redirect_to user_company_path(@user,@company)
+    else
+      flash[:danger] = "No se pudo editar!"
+      render 'new'
+    end
   end
 
   def destroy
@@ -101,5 +113,9 @@ class CompaniesController < ApplicationController
   private
     def company_params
       params.require(:company).permit(:rut, :name, :giro, :direccion, :comuna, :region, :description, :avatar, :selected, :rut_representante, :name_representante)
+    end
+    
+    def company_data_params
+      params.require(:company).permit(cargos_attributes: [:id, :name, :code], sucursals_attributes: [:id, :name, :code, :address], departments_attributes: [:id, :name, :code])
     end
 end
