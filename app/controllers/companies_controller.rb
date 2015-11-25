@@ -65,11 +65,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       get_regiones
       @company_tab = "empresa"
-      #falta crear los parametros para el siguiente tab
-      @company.cargos.build
-      @company.sucursals.build
-      @company.departments.build
-
+      
       #falta actualizar la variable que indica el tab actual
       render "new"
     else
