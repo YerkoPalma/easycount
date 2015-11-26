@@ -3,3 +3,5 @@ rvm:
   - 2.2
   - 2.1
   - 2.0
+before_install: gem install rails
+script: rake test
