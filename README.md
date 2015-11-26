@@ -1,5 +1,7 @@
 # Easy Count #
 
+[![Build Status](https://travis-ci.org/YerkoPalma/easycount.svg?branch=master)](https://travis-ci.org/YerkoPalma/easycount)
+
 ## TODO ##
 
 - [x] Actualizar Readme
