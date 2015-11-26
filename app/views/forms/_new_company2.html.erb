@@ -1,8 +1,8 @@
-<%= form_for(@company, url: create_company_data_path(@user, @company), :class => "col s12") do |f| %>
+<%= form_for(@company, url: create_company_data_path(@user, @company),:method => "put", :class => "col s12") do |f| %>
 <fieldset>
   <legend>Cargos</legend>
   <div class="row">
-    <%= f.fields_for :cargos do |cargos_form| %>
+    <%= f.fields_for :cargos, :index => "" do |cargos_form| %>
       <div class="input-field col s6">
         <%= cargos_form.text_field :name, :class => "validate" %>
         <%= cargos_form.label :name %>
@@ -17,7 +17,7 @@
 <fieldset>
   <legend>Sucursales</legend>
   <div class="row">
-    <%= f.fields_for :sucursals, include_id: false do |sucursales_form| %>
+    <%= f.fields_for :sucursales, :index => "" do |sucursales_form| %>
       <div class="input-field col s4">
         <%= sucursales_form.text_field :name, :class => "validate" %>
         <%= sucursales_form.label :name %>
@@ -36,7 +36,7 @@
 <fieldset>
   <legend>Departamentos/Unidades</legend>
   <div class="row">
-    <%= f.fields_for :departments do |departments_form| %>
+    <%= f.fields_for :departamentos, :index => "" do |departments_form| %>
       <div class="input-field col s6">
         <%= departments_form.text_field :name, :class => "validate" %>
         <%= departments_form.label :name %>

@@ -112,6 +112,6 @@ class CompaniesController < ApplicationController
     end
     
     def company_data_params
-      params.require(:company).permit(cargos_attributes: [:id, :name, :code], sucursals_attributes: [:id, :name, :code, :address], departments_attributes: [:id, :name, :code])
+      params.require(:company).permit(:cargos => [:name, :code], :sucursales => [:name, :code, :address], :departamentos => [:name, :code])
     end
 end

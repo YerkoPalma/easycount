@@ -11,7 +11,7 @@ Easycount::Application.routes.draw do
   match '/user/:user_id/select/:company_id', to: 'companies#select', via: 'post', as: :select_company
   match '/dashboard', to: 'pages#dashboard', via: 'get', as: :dashboard
   match '/users/:user_id/companies/:id', to: 'companies#destroy', via: 'delete', as: :destroy_company
-  match '/users/:user_id/companies/:id', to: 'companies#create_company_data', via: 'put', as: :create_company_data
+  match '/users/:user_id/companies_continue/:id', to: 'companies#create_company_data', via: 'put', as: :create_company_data
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
