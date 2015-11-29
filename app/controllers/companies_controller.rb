@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
 
     if @company.update_attributes(company_params)
       flash.now[:success] = "Datos actualizados"
-      #@current_user = @user
+
       redirect_to user_company_path(@user,@company)
     else
       flash.now[:danger] = "No se pudo editar!"
@@ -56,16 +56,16 @@ class CompaniesController < ApplicationController
 
     @current_company = @user.companies.find_by({:selected =>  true}) rescue nil
 
-    if @current_company.nil?
-      @company.update_attributes(:selected => true)
-      @current_company = @company
-    end
-
     if @company.save
       flash[:success] = "Compañia " + @company.name + " exitosamente ingresada"
       get_regiones
       @company_tab = "empresa"
-      
+
+      if @current_company.nil?
+        @company.update_attributes(:selected => true)
+        @current_company = @company
+      end
+
       #falta actualizar la variable que indica el tab actual
       render "new"
     else
@@ -81,10 +81,10 @@ class CompaniesController < ApplicationController
     @user = User.find(params[:user_id])
     @current_company = @user.companies.find_by({:selected =>  true})
     @company = @user.companies.find(params[:id])
-    
+
     if @company.update_attributes(company_data_params)
       flash[:success] = "Datos actualizados"
-      #@current_user = @user
+      
       redirect_to user_company_path(@user,@company)
     else
       flash[:danger] = "No se pudo editar!"
@@ -110,7 +110,7 @@ class CompaniesController < ApplicationController
     def company_params
       params.require(:company).permit(:rut, :name, :giro, :direccion, :comuna, :region, :description, :avatar, :selected, :rut_representante, :name_representante)
     end
-    
+
     def company_data_params
       params.require(:company).permit(:cargos => [:name, :code], :sucursales => [:name, :code, :address], :departamentos => [:name, :code])
     end

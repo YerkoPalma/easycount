@@ -7,11 +7,11 @@ class CompanyTest < ActiveSupport::TestCase
     attrs = attributes_for(:user)
     @user = User.new(attrs)
     @user.save
-    @company = @user.companies.new(rut: 723456789, name: "Acme", description: "Una empresa Acme", selected: false)
 
+    @company = @user.companies.new(attributes_for(:company))
   end
 
-  test "should be valid" do
+  test "should be valid" do    
     assert @user.valid?, @user.errors.full_messages[0]
     assert @company.valid?, @company.errors.full_messages[0]
   end
