@@ -28,7 +28,7 @@ class CompanyCreationTest < ActionDispatch::IntegrationTest
     end
     assert_template "companies/new"
     assert_not flash.empty?
-    assert_includes flash.keys, :danger
+    assert_includes flash.keys, :company_error
   end
 
   test "valid company creation" do
