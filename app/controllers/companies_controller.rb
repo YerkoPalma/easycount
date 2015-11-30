@@ -69,7 +69,8 @@ class CompaniesController < ApplicationController
       #falta actualizar la variable que indica el tab actual
       render "new"
     else
-      flash[:danger] = "No se pudo ingresar tu empresa"
+      #@errors = @company.errors
+      flash[:company_error] = @company.errors.full_messages
       redirect_to @user
     end
   end
@@ -84,7 +85,7 @@ class CompaniesController < ApplicationController
 
     if @company.update_attributes(company_data_params)
       flash[:success] = "Datos actualizados"
-      
+
       redirect_to user_company_path(@user,@company)
     else
       flash[:danger] = "No se pudo editar!"

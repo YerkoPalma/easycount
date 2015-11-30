@@ -20,18 +20,28 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  error: 
+  invalid_rut: " es invalido"
+  error:
     one: "%{count} error"
     other: "%{count} errores"
   mongoid:
     models:
       user: "Usuario"
+      company: "Company"
     attributes:
       user:
         password: "La contraseña"
         name: "El nombre"
         email: "La dirección de correo"
         password_confirmation: "La contraseña"
+      company:
+        rut: "El rut"
+        name: "El nombre"
+        giro: "El giro"
+        direccion: "La dirección"
+        comuna: "La comuna"
+        region: "La región"
+        rut_representante: "El Rut del representante legal"
     errors:
       models:
         user:
@@ -43,10 +53,25 @@ en:
               confirmation: " no coincide"
             name:
               blank: " no puede ser vacio"
-            email: 
+            email:
               blank: " no puede ser vacia"
               invalid: " es incorrecta"
               taken: " ya existe"
               too_long: " debe tener máximo 50 caracteres"
-          
-
+        company:
+          attributes:
+            rut:
+              invalid_rut: " debe ser un rut válido"
+              blank: " no puede estar vacío"
+            name:
+              blank: " no puede estar vacío"
+            giro:
+              blank: " no puede estar vacío"
+            direccion:
+              blank: " no puede estar vacía"
+            region:
+              blank: " no puede estar vacía"
+            comuna:
+              blank: " no puede estar vacía"
+            rut_representante:
+              blank: " no puede estar vacío"
