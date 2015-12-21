@@ -11,3 +11,7 @@
 - [x] Agregar formulario de empresas
 - [ ] Identificar empresa actual del usuario
 - [ ] Agregar menu principal del dashboard
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/YerkoPalma/easycount/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
